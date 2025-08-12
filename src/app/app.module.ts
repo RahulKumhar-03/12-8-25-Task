@@ -8,10 +8,14 @@ import { MatTableModule} from '@angular/material/table'
 import { MatButtonModule } from '@angular/material/button'
 import { MatTabsModule } from '@angular/material/tabs'
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TabsComponent } from './tabs/tabs.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TabsComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
