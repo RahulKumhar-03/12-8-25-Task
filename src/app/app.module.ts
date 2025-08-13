@@ -10,12 +10,14 @@ import { MatTabsModule } from '@angular/material/tabs'
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TabsComponent } from './tabs/tabs.component';
 import { TableComponent } from './table/table.component';
-
+import { CryptoDialogComponent } from './crypto-dialog/crypto-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog'
 @NgModule({
   declarations: [
     AppComponent,
     TabsComponent,
-    TableComponent
+    TableComponent,
+    CryptoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { TableComponent } from './table/table.component';
     MatTableModule,
     MatButtonModule,
     MatTabsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

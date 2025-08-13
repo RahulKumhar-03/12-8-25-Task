@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MainService } from '../services/main.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -9,10 +10,10 @@ import { MainService } from '../services/main.service';
 })
 export class TableComponent {
   users: any[] = []
-  displayedColumns: string[] = ['firstName','lastName','userName','age','gender','email','phone']
+  displayedColumns: string[] = ['image','firstName','lastName','userName','age','gender','email','phone','action']
   dataSource = new MatTableDataSource<any>()
 
-  constructor(private service: MainService){}
+  constructor(private service: MainService, private router: Router){}
 
   ngOnInit(){
     this.loadUserDetails()
@@ -20,8 +21,6 @@ export class TableComponent {
   loadUserDetails(){
     this.service.getAllUserDetails().subscribe({
       next: (response) => {
-        console.log(response.users);
-        
         this.users = response.users
         this.dataSource.data = this.users
       },
@@ -30,5 +29,8 @@ export class TableComponent {
         console.error("Error while fetching details: ",err)
       }
     })
+  }
+  goToTabs(data:any){
+    this.router.navigate(['/tabs'], {state:{address: data.address, bank: data.bank, company: data.company, crypto: data.crypto}});
   }
 }
