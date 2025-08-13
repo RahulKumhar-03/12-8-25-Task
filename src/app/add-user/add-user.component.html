@@ -1,0 +1,79 @@
+<div style="margin: 20px">
+  <mat-stepper [linear]="isLinear" #stepper style="margin: 10px;">
+    <!-- Basic User Details -->
+    <mat-step [stepControl]="firstFormGroup" style="margin: 10px;">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out User's Basic Details</ng-template>
+        <mat-form-field style="margin-right:20px; margin-top: 10px;">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="First name" formControlName="firstName" [(ngModel)]="userData.firstName" required/>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last name" formControlName="lastName" [(ngModel)]="userData.lastName" required/>
+        </mat-form-field>
+
+        <mat-form-field style="margin-right: 20px;">
+          <mat-label>Image URL</mat-label>
+          <input matInput placeholder="Image URl" formControlName="image" [(ngModel)]="userData.image" required/>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Age</mat-label>
+          <input type="number" matInput placeholder="Age. 30" formControlName="age" [(ngModel)]="userData.age" required/>
+        </mat-form-field>
+
+        <mat-form-field style="margin-right: 20px;">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="xyz@...." formControlName="email" [(ngModel)]="userData.email" required/>
+        </mat-form-field>
+        
+        <mat-form-field>
+          <mat-label>Gender</mat-label>
+          <input matInput placeholder="Male | Female" formControlName="gender" [(ngModel)]="userData.gender" required/>
+        </mat-form-field>
+        
+        <mat-form-field style="margin-right: 20px;">
+          <mat-label>Phone</mat-label>
+          <input matInput placeholder="Phone Number" formControlName="phone" [(ngModel)]="userData.phone" required/>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>User Name</mat-label>
+          <input matInput placeholder="User Name eg. rahul123" formControlName="username" [(ngModel)]="userData.username" required/>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <!-- 2nd: Address, Bank, Company Details and Crypto Detials Optional -->
+    <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+      <form [formGroup]="secondFormGroup">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input
+            matInput
+            formControlName="secondCtrl"
+            placeholder="Ex. 1 Main St, New York, NY"
+            required
+          />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>
