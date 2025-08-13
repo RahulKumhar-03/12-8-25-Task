@@ -1,15 +1,33 @@
 <div style="padding: 30px;">
   <mat-tab-group>
   <mat-tab label="Address">
-
+    <div class="details-container" style="padding: 20px; justify-items: center;">
+        <h1>Address: {{address.address}}</h1>
+        <h3>City: {{address.city}}</h3>
+        <h3>State: {{address.state}}, {{address.stateCode}}</h3>
+        <h3>Country: {{address.country}}</h3>
+        <h3>Pin Code: {{address.postalCode}}</h3>        
+    </div>
   </mat-tab>
-  
-  <mat-tab label="Bank">
 
+  <mat-tab label="Bank">
+    <div class="details-container" style="padding: 20px; justify-items: center;">
+        <h1>Card No.: {{bank.cardNumber}}</h1>
+        <h3>Curreny: {{bank.currency}}</h3>
+        <h3>Card Type: {{bank.cardType}}</h3>
+        <h3>Expiry Date: {{bank.cardExpire}}</h3>
+        <div><button mat-raised-button (click)="openCryptoDialog(crypto)">Crypto Details</button></div>  
+          
+    </div>
   </mat-tab>
 
   <mat-tab label="Company">
-
+    <div class="details-container" style="padding: 20px; justify-items: center;">
+        <h1>Company: {{company.name}}</h1>
+        <h3>Department: {{company.department}}</h3>
+        <h3>Designation: {{company.title}}</h3>       
+        <h3>Address: {{company.address.address}}, {{company.address.city}}, {{company.address.state}}, {{company.address.country}}</h3>      
+    </div>
   </mat-tab>
 </mat-tab-group>
 </div>
