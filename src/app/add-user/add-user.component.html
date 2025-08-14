@@ -1,0 +1,188 @@
+<div style="margin: 20px">
+  <mat-stepper [linear]="isLinear" #stepper style="margin: 10px;"> 
+    <!-- Basic User Details -->
+    <mat-step [stepControl]="firstFormGroup" style="margin: 10px;">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out User's Basic Details</ng-template>
+        <mat-form-field style="margin-right:20px; margin-top: 10px;">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="First name" formControlName="firstName" [(ngModel)]="userData.firstName" required/>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last name" formControlName="lastName" [(ngModel)]="userData.lastName" required/>
+        </mat-form-field>
+
+        <mat-form-field style="margin-right: 20px;">
+          <mat-label>Image URL</mat-label>
+          <input matInput placeholder="Image URl" formControlName="image" [(ngModel)]="userData.image" required/>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Age</mat-label>
+          <input type="number" matInput placeholder="Age. 30" formControlName="age" [(ngModel)]="userData.age" required/>
+        </mat-form-field>
+
+        <mat-form-field style="margin-right: 20px;">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="xyz@...." formControlName="email" [(ngModel)]="userData.email" required/>
+        </mat-form-field>
+        
+        <mat-form-field>
+          <mat-label>Gender</mat-label>
+          <input matInput placeholder="Male | Female" formControlName="gender" [(ngModel)]="userData.gender" required/>
+        </mat-form-field>
+        
+        <mat-form-field style="margin-right: 20px;">
+          <mat-label>Phone</mat-label>
+          <input matInput placeholder="Phone Number" formControlName="phone" [(ngModel)]="userData.phone" required/>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>User Name</mat-label>
+          <input matInput placeholder="User Name eg. rahul123" formControlName="username" [(ngModel)]="userData.username" required/>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <!-- 2nd: Address, Bank, Company Details and Crypto Detials Optional -->
+    <mat-step>
+      <ng-template matStepLabel>Fill out User's Bank, Company, Address Details</ng-template>
+      <mat-tab-group>
+        <mat-tab label="Address">
+            <form [formGroup]="addressFormGroup">
+                <ng-template matStepLabel>Fill out User's Address Details</ng-template>
+                <mat-form-field style="margin-right:20px; margin-top: 10px;">
+                    <mat-label>Address</mat-label>
+                    <input matInput placeholder="Address eg.626 Main Street" formControlName="address" [(ngModel)]="userData.address.address" required/>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="City eg.Phoenix" formControlName="city" [(ngModel)]="userData.address.city" required/>
+                </mat-form-field>
+
+                <mat-form-field style="margin-right: 20px;">
+                    <mat-label>State</mat-label>
+                    <input matInput placeholder="State eg. Mississippi" formControlName="state" [(ngModel)]="userData.address.state" required/>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Country</mat-label>
+                    <input matInput placeholder="Country eg.United States" formControlName="country" [(ngModel)]="userData.address.country" required/>
+                </mat-form-field>
+
+                <mat-form-field style="margin-right: 20px;">
+                    <mat-label>Postal Code</mat-label>
+                    <input matInput placeholder="Postal Code eg.29112" formControlName="postalCode" [(ngModel)]="userData.address.postalCode" required/>
+                </mat-form-field>
+                
+            </form>
+        </mat-tab>
+        <mat-tab label="Bank">
+            <form [formGroup]="bankFormGroup">
+                <ng-template matStepLabel>Fill out User's Bank Details</ng-template>
+                <mat-form-field style="margin-right:20px; margin-top: 10px;">
+                    <mat-label>Card Number</mat-label>
+                    <input matInput placeholder="Card No. eg.9289760655481815" formControlName="cardNo" [(ngModel)]="userData.bank.cardNumber" required/>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Card Type</mat-label>
+                    <input matInput placeholder="Card Type eg. Elo" formControlName="cardType" [(ngModel)]="userData.bank.cardType" required/>
+                </mat-form-field>
+
+                <mat-form-field style="margin-right: 20px;">
+                    <mat-label>Currency</mat-label>
+                    <input matInput placeholder="Currency eg.CNY" formControlName="currency" [(ngModel)]="userData.bank.currency" required/>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Card Expiry Date</mat-label>
+                    <input matInput placeholder="Expiry eg. 03/26" formControlName="expire" [(ngModel)]="userData.bank.cardExpire" required/>
+                </mat-form-field>
+                
+            </form>
+        </mat-tab>
+        <mat-tab label="Company">
+            <form [formGroup]="companyFormGroup">
+                <ng-template matStepLabel>Fill out User's Bank Details</ng-template>
+                <mat-form-field style="margin-right:20px; margin-top: 10px;">
+                    <mat-label>Company Name</mat-label>
+                    <input matInput placeholder="Name eg.Dooley, Kozey and Cronin" formControlName="companyName" [(ngModel)]="userData.company.name" required/>
+                </mat-form-field>
+
+                <mat-form-field style="margin-right: 20px;">
+                    <mat-label>Department</mat-label>
+                    <input matInput placeholder="Department eg.Engineering" formControlName="department" [(ngModel)]="userData.company.department" required/>
+                </mat-form-field>
+
+                <mat-form-field style="margin-right: 20px;">
+                    <mat-label>Position Title</mat-label>
+                    <input matInput placeholder="title eg.Sales Manager" formControlName="title" [(ngModel)]="userData.company.title" required/>
+                </mat-form-field>
+
+                <mat-form-field style="margin-right: 20px;">
+                    <mat-label>Street Address</mat-label>
+                    <input matInput placeholder="Address eg.263 Tenth Street" formControlName="companyStreet" [(ngModel)]="userData.company.address.address" required=""/>
+                </mat-form-field>
+
+                <mat-form-field style="margin-right: 20px;">
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="City eg.Phoenix" formControlName="companyCity" [(ngModel)]="userData.company.address.city" required/>
+                </mat-form-field>
+
+                <mat-form-field style="margin-right: 20px;">
+                    <mat-label>State</mat-label>
+                    <input matInput placeholder="State eg. Mississippi" formControlName="companyState" [(ngModel)]="userData.company.address.state" required/>
+                </mat-form-field>
+
+                <mat-form-field style="margin-right: 20px;">
+                    <mat-label>Country</mat-label>
+                    <input matInput placeholder="Country eg.United States" formControlName="companyCountry" [(ngModel)]="userData.company.address.country" required/>
+                </mat-form-field>
+            </form>
+        </mat-tab>
+      </mat-tab-group>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+
+    <mat-step [stepControl]="thirdFormGroup" style="margin: 10px;">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Fill out User's Crypto Details</ng-template>
+        <mat-form-field style="margin-right:20px; margin-top: 10px;">
+          <mat-label>Crypto Coin Name</mat-label>
+          <input matInput placeholder="Coin Name eg.Bitcoin" formControlName="coin" [(ngModel)]="userData.crypto.coin"/>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Network Name</mat-label>
+          <input matInput placeholder="Network Name eg. Ethereum" formControlName="network" [(ngModel)]="userData.crypto.network"/>
+        </mat-form-field>
+
+        <mat-form-field style="margin-right: 20px;">
+          <mat-label>Wallet Id</mat-label>
+          <input matInput placeholder="Wallet Id" formControlName="wallet" [(ngModel)]="userData.crypto.wallet"/>
+        </mat-form-field>
+  
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button (click)="onSave()">Submit</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

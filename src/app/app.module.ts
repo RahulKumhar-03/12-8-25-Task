@@ -10,12 +10,20 @@ import { MatTabsModule } from '@angular/material/tabs'
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TabsComponent } from './tabs/tabs.component';
 import { TableComponent } from './table/table.component';
-
+import { CryptoDialogComponent } from './crypto-dialog/crypto-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddUserComponent } from './add-user/add-user.component'
+import { MatStepperModule } from '@angular/material/stepper'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
     TabsComponent,
-    TableComponent
+    TableComponent,
+    CryptoDialogComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +32,13 @@ import { TableComponent } from './table/table.component';
     MatTableModule,
     MatButtonModule,
     MatTabsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
