@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
+  user:any
   users: User[] = []
   displayedColumns: string[] = ['image','firstName','lastName','userName','age','gender','email','phone','action']
   dataSource = new MatTableDataSource<any>()
@@ -23,7 +24,11 @@ export class TableComponent {
   loadUserDetails(){
     this.service.getAllUserDetails().subscribe({
       next: (response) => {
-        this.users = response.users
+        this.users = response.users;
+        if(localStorage.getItem('newUser')){
+          this.user = localStorage.getItem('newUser')
+          this.users.push(JSON.parse(this.user))
+        }
         this.dataSource.data = this.users
       },
       error: (err) => {
@@ -36,8 +41,26 @@ export class TableComponent {
     this.router.navigate(['/tabs'], {state:{address: data.address, bank: data.bank, company: data.company, crypto: data.crypto}});
   }
   openAddUserDialog(){
-    this.dialog.open(AddUserComponent,{
+    const dialog = this.dialog.open(AddUserComponent,{
       width:'700px'
+    })
+    dialog.afterClosed().subscribe((userData) => {
+      console.log(userData);
+      
+      this.service.createNewUser(userData).subscribe({
+        next: (response) => {
+          console.log(response);
+          
+          localStorage.setItem('newUser',JSON.stringify(response));
+          alert('New User Added Successfully!');
+          this.users = [...this.users,response]
+          this.dataSource.data = this.users
+        },
+        error:(err) =>{
+          alert('Error while creating new user! Try Again')
+          console.error("Error while creating new user: ",err)
+        }
+      })
     })
   }
 }

@@ -33,6 +33,11 @@ export class AddUserComponent {
       cardType:'',
       currency:''
     },
+    crypto:{
+      coin:'',
+      wallet:'',
+      network:''
+    },
     company:{
       name:'',
       department:'',
@@ -43,53 +48,8 @@ export class AddUserComponent {
         country:''
       },
       title:''
-    },
-    crypto:{
-      coin:'',
-      network:'',
-      wallet:''
     }
   }
-  // address:Address = {
-  //   address:'',
-  //   city:'',
-  //   state:'',
-  //   country:'',
-  //   stateCode:'',
-  //   postalCode:''
-  // }
-  // bank:Bank = {
-  //   cardNumber:'',
-  //   cardExpire:'',
-  //   cardType:'',
-  //   currency:''
-  // }
-  // company:Company = {
-  //   name:'',
-  //   department:'',
-  //   address: {
-  //     address:'',
-  //     city:'',
-  //     state:'',
-  //     country:''
-  //   },
-  //   title:''
-  // }
-  // user:User = {
-  //   firstName:'',
-  //   lastName:'',
-  //   age:0,
-  //   email:'',
-  //   gender:'',
-  //   image:'',
-  //   phone:'',
-  //   username:''
-  // }
-  // crypto?:Crypto = {
-  //   coin:'',
-  //   network:'',
-  //   wallet:''
-  // }
   firstFormGroup = this._formBuilder.group({
     firstName: ['', Validators.required],
     lastName: ['',Validators.required],
@@ -100,10 +60,36 @@ export class AddUserComponent {
     username: ['',Validators.required],
     gender: ['',Validators.required],
   });
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],  
-  });
+  addressFormGroup = this._formBuilder.group({
+    address: ['', Validators.required],
+    state: ['',Validators.required],
+    postalCode: ['',Validators.required],
+    country: ['',Validators.required],
+    city: ['',Validators.required],
+  })
+  bankFormGroup = this._formBuilder.group({
+    cardNo:['', Validators.required],
+    cardType:['', Validators.required],
+    currency:['', Validators.required],
+    expire:['', Validators.required],
+  })
+  companyFormGroup = this._formBuilder.group({
+    companyName:['', Validators.required],
+    department:['', Validators.required],
+    title:['', Validators.required],
+    companyStreet:['', Validators.required],
+    companyCity:['', Validators.required],
+    companyCountry:['', Validators.required],
+    companyState:['', Validators.required],
+  })
+  thirdFormGroup = this._formBuilder.group({
+    coin:[''],
+    wallet:[''],
+    network:[''],
+  })
+  
   isLinear = true;
+  isOptional = true;
 
   constructor(private dialogRef: MatDialogRef<AddUserComponent>, private _formBuilder: FormBuilder){}
 
@@ -111,7 +97,8 @@ export class AddUserComponent {
     this.dialogRef.close(null)
   }
   onSave(){
-
+    console.log(this.userData);
+    
     this.dialogRef.close(this.userData);
   }
 }
